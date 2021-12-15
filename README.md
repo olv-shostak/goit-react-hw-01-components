@@ -1,85 +1,213 @@
-# Getting Started with Create React App
+# Создание и настройка React-App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Создать репозиторий и склонировать на ПК
 
-## Available Scripts
+## 2. Установить React application
 
-In the project directory, you can run:
+Открыть терминал в папке проекта и установить `react-app`
 
-### `npm start`
+```powershell
+npx create-react-app .
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 3. Удалить ненужные файлы
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 3.1 `public/index.html`
 
-### `npm test`
+В папке `public` оставить только `index.html`. Удалить код из `index.html`, создать базовую разметку
+с помощью Emmet.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+Разметка может выглядеть так:
 
-### `npm run build`
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3.2 `/src`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+В папке `/src` достаточно оставить `index.js`, `App.js`, `index.css`, `App.css`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+В папке `/src` создать папку `components` для размещения будущих компонентов.
 
-### `npm run eject`
+### 3.3 `index.js`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+В `index.js` достаточно оставить следующий код:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time.
-This command will remove the single build dependency from your project.
+```js
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root'),
+);
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel,
-ESLint, etc) right into your project so you have full control over them. All of the commands except
-`eject` will still work, but they will point to the copied scripts so you can tweak them. At this
-point you’re on your own.
+### 3.4 `App.js`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle
-deployments, and you shouldn’t feel obligated to use this feature. However we understand that this
-tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+В `App.js` достаточно оставить следующий код:
 
-## Learn More
+```js
+// App.js
+import './App.css';
+function App() {
+  return <div className="App">TEST</div>;
+}
+export default App;
+```
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3.4 `App.css`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+В `App.css` удалить ненужные стили.
 
-### Code Splitting
+## 4. Запустить сервер проверить, нет ли ошибкок.
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```powershell
+npm start
+```
 
-### Analyzing the Bundle Size
+## 5. Настройка pre-commit хуков
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 5.1 Установка зависимосте
 
-### Making a Progressive Web App
+Установить в проект следующие пакеты.
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`Примечание:` react-app корректно работает с более старой версией `eslint 7.11.0`
 
-### Advanced Configuration
+```powershell
+npm install --save-dev prettier eslint@7.11.0
+```
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 5.2 Инициализация lint-staged и husky
 
-### Deployment
+ользователям `MacOS` и `Linux` систем необходимо выполнить в терминале следующую команду. Она
+установит и настроит husky и lint-staged в зависимости от инструментов качества кода из зависимостей
+проекта в package.json.
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```powershell
+npx mrm lint-staged
+```
 
-### `npm run build` fails to minify
+Пользователям `Windows` необходимо выполнить следующую команду. Она делает тоже самое.
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```powershell
+npx mrm@2 lint-staged
+```
+
+### 5.3 Настройка в VSCode
+
+Провреить наличие следующих раширений:
+
+`Prettier - Code formatter`
+
+`Formatting Toggle`
+
+`ESLint`
+
+Можно добавить настройки `Prettier`, создав файл `.prettierrc.yaml` в корневой папке проекта. Можно
+добавить следующие настройки.
+
+```yaml
+printWidth: 100
+useTabs: false
+semi: true
+singleQuote: true
+trailingComma: 'all'
+bracketSpacing: true
+arrowParens: 'avoid'
+proseWrap: 'always'
+```
+
+Открыть настройки `VSCode` и проверить следующее:
+
+`autoSave`
+
+![Превью настроек VSCode](./README/1.png)
+
+`formatOnSave`
+
+![Превью настроек VSCode](./README/2.png)
+
+`codeActionsOnSave`
+
+![Превью настроек VSCode](./README/3.png)
+
+Или же добавить код в файл `settings.json`
+
+`Ctrl + Shift + P` => `settings.json` => `Open Settings (JSON)`
+
+```json
+{
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+```
+
+## 6. Настройка Деплоя
+
+[Ссылка на create-react-app](https://create-react-app.dev/docs/deployment#github-pages)
+
+В `package.json` добавить следующию строку:
+
+```json
+"homepage": "https://https://имя_пользователя.github.io/имя_репозитория"
+```
+
+Сделать билд через терминал:
+
+```powershell
+npm run build
+```
+
+Установить пакет `gh-pages`
+
+```powershell
+npm install --save gh-pages
+```
+
+В `package.json` в `scripts` добавить 2 скрипта:
+
+```json
+  "scripts": {
+    // добавить к остальным скриптам
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+```
+
+Запустить деплой
+
+```powershell
+npm run deploy
+```
+
+Скрипт `predeploy` запускать не нужно, он выполнится автоматически. Будет создана ветка `gh-pages`,
+выполнен автоккоммит и её пуш в ваш репозиторий на GitHub.сom, в настройках GitHub Pages
+автоматически будет подставлена ветка `gh-pages`, достаточно взять ссылку. Сам проект как обычно
+коммитим, пушим, чтобы код отразился в ветке `main`.
+
+## Если у кого-то не получилось настроить, я не виноват :)
+
+### Не забудьте
+
+## 7. Дальнейшая работа с проектом
+
+Работаем, делаем коммиты и пушим на `GitHub` как обычно. Страница автоматически не обновится. Если
+нужно залить на GitHub Pages, делаете повторно `npm run deploy`. Или же можете настроить автодеплой.
+Меня этот вопрос на данный момент не волнует.
