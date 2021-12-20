@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
+import { ProfileCont, Description, AvatarImg } from './Profile.styled'
+
 
 function Profile(props) {
   return (
-    <div className="profile">
-      <div className="description">
-        <img src={props.avatar} alt="User avatar" className="avatar" />
+    <ProfileCont>
+      <Description>
+        <AvatarImg src={props.avatar} alt="User avatar" />
         <p className="name">{props.username}</p>
         <p className="tag">@{props.tag}</p>
         <p className="location">{props.location}</p>
-      </div>
+      </Description>
 
       <ul className="stats">
         <li>
@@ -24,7 +26,7 @@ function Profile(props) {
           <span className="quantity">{props.statsLikes}</span>
         </li>
       </ul>
-    </div>
+    </ProfileCont>
   );
 }
 
