@@ -1,7 +1,10 @@
 // App.js
 import user from './data/user.json';
+import statistics from './data/statistics.json';
 import Profile from './components/Profile/Profile';
 import { Container } from './App.styled';
+import 'normalize.css';
+import Statistics from './components/Statistics/Statistics';
 
 function App() {
   return (
@@ -15,6 +18,7 @@ function App() {
         statsViews={user.stats.views}
         statsLikes={user.stats.likes}
       />
+      <Statistics title="Upload stats" data={statistics} />
     </Container>
   );
 }

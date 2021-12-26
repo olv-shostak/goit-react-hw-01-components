@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ProfileCont, Description, AvatarImg } from './Profile.styled'
+import { ProfileCont, Description, AvatarImg, UserName, UserTag, UserLocation, StatsList, StatsItem, StatsLabel, StatsQuantity } from './Profile.styled'
 
 
 function Profile(props) {
@@ -7,25 +7,25 @@ function Profile(props) {
     <ProfileCont>
       <Description>
         <AvatarImg src={props.avatar} alt="User avatar" />
-        <p className="name">{props.username}</p>
-        <p className="tag">@{props.tag}</p>
-        <p className="location">{props.location}</p>
+        <UserName>{props.username}</UserName>
+        <UserTag>@{props.tag}</UserTag>
+        <UserLocation>{props.location}</UserLocation>
       </Description>
 
-      <ul className="stats">
-        <li>
-          <span className="label">Followers</span>
-          <span className="quantity">{props.stastFolowers}</span>
-        </li>
-        <li>
-          <span className="label">Views</span>
-          <span className="quantity">{props.statsViews}</span>
-        </li>
-        <li>
-          <span className="label">Likes</span>
-          <span className="quantity">{props.statsLikes}</span>
-        </li>
-      </ul>
+      <StatsList>
+        <StatsItem>
+          <StatsLabel>Followers</StatsLabel>
+          <StatsQuantity>{props.stastFolowers}</StatsQuantity>
+        </StatsItem>
+        <StatsItem>
+          <StatsLabel>Views</StatsLabel>
+          <StatsQuantity>{props.statsViews}</StatsQuantity>
+        </StatsItem>
+        <StatsItem>
+          <StatsLabel>Likes</StatsLabel>
+          <StatsQuantity>{props.statsLikes}</StatsQuantity>
+        </StatsItem>
+      </StatsList>
     </ProfileCont>
   );
 }
