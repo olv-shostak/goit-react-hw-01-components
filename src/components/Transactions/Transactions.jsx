@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { TransactionTable, TableHead, TableBody, TableHeadRow, TableHeadLine, TableBodyRow, TableBodyLine } from './Transactions.styled';
 
 function TransactionHistory({ items }) {
@@ -22,6 +23,13 @@ function TransactionHistory({ items }) {
       </TableBody>
     </TransactionTable>
   );
+}
+
+TransactionTable.propTypes = {
+  type: PropTypes.string,
+  id: PropTypes.number,
+  amount: PropTypes.number,
+  currency: PropTypes.string,
 }
 
 export default TransactionHistory;

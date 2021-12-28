@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FriendListUl, FriendItem, Status, FriendImg, FriendName } from './FriendList.styled';
 
 function FriendList({ friends }) {
@@ -13,5 +14,13 @@ function FriendList({ friends }) {
     </FriendListUl>
   );
 }
+
+FriendList.propTypes = {
+  isOnline: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+}
+
 
 export default FriendList;

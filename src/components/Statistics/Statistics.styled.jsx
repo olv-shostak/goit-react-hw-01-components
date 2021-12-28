@@ -9,7 +9,7 @@ export const StatisticsSec = styled.section`
     margin-right: auto;
     margin-bottom: 50px;
     padding: 0;
-    background-color: #fff;
+    background-color: #e6e6e6;
     overflow: hidden;
 `;
 
