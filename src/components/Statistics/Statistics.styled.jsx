@@ -15,7 +15,8 @@ export const StatisticsSec = styled.section`
 
 export const Title = styled.h2`
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
+    text-transform: uppercase;
 `;
 
 export const StatisticsList = styled.ul`

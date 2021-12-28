@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 
 export const ProfileCont = styled.div`
-margin-right: auto;
-margin-left: auto;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
     margin-bottom: 50px;
     width: 300px;
@@ -47,10 +47,6 @@ export const UserLocation = styled.p`
 export const StatsList = styled.ul`
     display: flex;
     width: 100%;
-    padding-inline-start: 0px;
-    margin: 0;
-    margin-block-start: 0;
-    margin-block-end: 0;
 `;
 
 export const StatsItem = styled.li`
